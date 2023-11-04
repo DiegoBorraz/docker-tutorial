@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial Docker basico</title>
+</head>
+<body>
+    <h1>Tutorial Docker basico</h1>
+
+    <h2>1- Começo a partir da imagem do nginx</h2>
+    <h3>docker run -p 8080:80 nginx</h3>
+    <h4>Aqui eu digo que ao rodar o nginx no meu container a porta 80 do Container estará apontada para a 8080 da minha maquina</h4>
+    
+    <h2>2- Aqui eu digo que tudo que esta na minha pasta html altera em tempo real a pasta html do meu container</h2>
+    <h4>docker run -p 8080:80 -v $(pwd)/html:/usr/share/nginx/html nginx</h4>
+
+    <h2>3- Aqui eu copio o index.html para dentro do nginx</h2>
+    <h4>COPY html/index.html /usr/share/nginx/html/</h4>
+
+    <h2>4- Agora buildo o docker e dou um nome a ele</h2>
+    <h4>ocker build -t diegoavila33/docker-tutorial:latest .</h4>
+
+    <h2>5- Agora subo o container para o DockerHub</h2>
+    <h3>docker push diegoavila33/docker-tutorial</h3>
+
+    <h2>6- Para pegar o container </h2>
+    <h3>docker run -p 8080:80 diegoavila33/docker-tutorial</h3>
+</body>
+</html>
